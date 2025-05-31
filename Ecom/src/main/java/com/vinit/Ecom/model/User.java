@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import com.vinit.Ecom.model.Role;
 
 @Document(collection = "users")
 public class User {
@@ -20,8 +21,11 @@ public class User {
     @Email
     @NotEmpty
     private String userEmail;
+    private Role role;
+
 
     public User(){}
+
 
     public User(String userPassword, String userName, String userType, int userNumber, String userEmail){
         this.userPassword=userPassword;
@@ -74,5 +78,12 @@ public class User {
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
     }
-}
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+}

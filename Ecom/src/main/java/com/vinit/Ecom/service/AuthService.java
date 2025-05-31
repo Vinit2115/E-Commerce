@@ -3,6 +3,7 @@ package com.vinit.Ecom.service;
 
 import com.vinit.Ecom.dto.SignInDTO;
 import com.vinit.Ecom.dto.SignUpDTO;
+import com.vinit.Ecom.model.Role;
 import com.vinit.Ecom.model.User;
 import com.vinit.Ecom.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -39,7 +40,7 @@ public class AuthService
 
     public String userSignUps(SignUpDTO signUp)
     {
-        if(userRepo.existByUserEmail(signUp.getUserEmail()))
+        if(userRepo.existsByUserEmail(signUp.getUserEmail()))
         {
             return "User already exists!";
         }
@@ -49,9 +50,10 @@ public class AuthService
         newUser.setUserName(signUp.getUserName());
         newUser.setUserEmail(signUp.getUserEmail());
         newUser.setUserPassword(signUp.getUserPassword());
+        newUser.setRole(Role.USER);
 
         userRepo.save(newUser);
-        return "User registered successfully!";
+        return "Registered successfully!";
     }
 }
 
