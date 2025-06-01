@@ -23,14 +23,12 @@ public class AuthController
     @PostMapping("/login")
     public ResponseEntity<String> userSignIn(@RequestBody SignInDTO signIn)
     {
-        String response=authServ.userSignIns(signIn);
-        return ResponseEntity.ok(response);
+        return authServ.userSignIns(signIn);
     }
 
     @PostMapping("/register")
     public ResponseEntity<String> userSignUp(@RequestBody SignUpDTO signUp)
     {
-        String response=authServ.userSignUps(signUp);
-        return ResponseEntity.ok(response);
+        return authServ.userSignUps(signUp);
     }
 }
