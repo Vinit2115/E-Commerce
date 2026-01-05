@@ -1,0 +1,207 @@
+.adminPage {
+    padding: var(--space-xl) 0 var(--space-3xl);
+}
+
+.header {
+    margin-bottom: var(--space-xl);
+}
+
+.backBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: var(--space-md);
+    transition: color var(--transition-fast);
+}
+
+.backBtn:hover {
+    color: var(--accent-primary);
+}
+
+.header h1 {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: var(--space-lg);
+}
+
+/* Table */
+.table {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.tableHeader {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 80px;
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+    background: var(--bg-tertiary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tableRow {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 80px;
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    transition: background var(--transition-fast);
+}
+
+.tableRow:hover {
+    background: var(--bg-tertiary);
+}
+
+.productCell {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.productImage {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.5);
+    flex-shrink: 0;
+}
+
+.productName {
+    display: block;
+    font-weight: 500;
+}
+
+.productId {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.category {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.price {
+    font-weight: 600;
+}
+
+.deleteBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.deleteBtn:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--error);
+}
+
+/* Modal */
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: var(--space-lg);
+}
+
+.modal {
+    width: 100%;
+    max-width: 500px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modalHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-lg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modalHeader h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.closeBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.closeBtn:hover {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.form {
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.modalActions {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: flex-end;
+    margin-top: var(--space-md);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .tableHeader {
+        display: none;
+    }
+
+    .tableRow {
+        grid-template-columns: 1fr;
+        gap: var(--space-sm);
+    }
+
+    .productCell {
+        margin-bottom: var(--space-sm);
+    }
+}

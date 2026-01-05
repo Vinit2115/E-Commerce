@@ -11,24 +11,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/auth")
-public class AuthController
-{
+@CrossOrigin(origins = "http://localhost:3000")
+public class AuthController {
     private final AuthService authServ;
 
-    public AuthController(AuthService authServ)
-    {
-        this.authServ=authServ;
+    public AuthController(AuthService authServ) {
+        this.authServ = authServ;
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> userSignIn(@RequestBody SignInDTO signIn)
-    {
+    public ResponseEntity<String> userSignIn(@RequestBody SignInDTO signIn) {
         return authServ.userSignIns(signIn);
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> userSignUp(@RequestBody SignUpDTO signUp)
-    {
+    public ResponseEntity<String> userSignUp(@RequestBody SignUpDTO signUp) {
         return authServ.userSignUps(signUp);
     }
 }
