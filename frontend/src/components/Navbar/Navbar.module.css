@@ -1,0 +1,210 @@
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(10, 10, 15, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.navContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.logoIcon {
+    font-size: 1.8rem;
+}
+
+.logoText {
+    letter-spacing: -0.5px;
+}
+
+.navLinks {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+}
+
+.navLink {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: color var(--transition-fast);
+    position: relative;
+}
+
+.navLink:hover,
+.navLink.active {
+    color: var(--text-primary);
+}
+
+.navLink.active::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent-gradient);
+    border-radius: 2px;
+}
+
+.navActions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.cartBtn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-full);
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+}
+
+.cartBtn:hover {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.cartBadge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-primary);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+    border-radius: var(--radius-full);
+}
+
+.userMenu {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.userBtn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-full);
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+}
+
+.userBtn:hover {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.userName {
+    font-size: 0.9rem;
+    font-weight: 500;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.logoutBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: var(--radius-full);
+    background: var(--bg-tertiary);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.logoutBtn:hover {
+    background: rgba(239, 68, 68, 0.2);
+    color: var(--error);
+}
+
+.menuToggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: var(--radius-md);
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .navLinks {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: var(--space-xl);
+        background: var(--bg-primary);
+        transform: translateX(-100%);
+        transition: transform var(--transition-base);
+    }
+
+    .navLinks.active {
+        transform: translateX(0);
+    }
+
+    .navLink {
+        font-size: 1.2rem;
+        padding: var(--space-md) 0;
+        width: 100%;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .navLink.active::after {
+        display: none;
+    }
+
+    .menuToggle {
+        display: flex;
+    }
+
+    .userName {
+        display: none;
+    }
+}

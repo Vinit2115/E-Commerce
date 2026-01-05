@@ -1,0 +1,122 @@
+.authPage {
+    min-height: calc(100vh - 70px - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-xl);
+}
+
+.authCard {
+    width: 100%;
+    max-width: 440px;
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: var(--space-2xl);
+}
+
+.authHeader {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+}
+
+.authIcon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-lg);
+    background: var(--accent-gradient);
+    border-radius: var(--radius-lg);
+    color: white;
+}
+
+.authHeader h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+}
+
+.authHeader p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.authForm {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.inputWrapper {
+    position: relative;
+}
+
+.inputIcon {
+    position: absolute;
+    left: var(--space-md);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+.passwordToggle {
+    position: absolute;
+    right: var(--space-sm);
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: color var(--transition-fast);
+}
+
+.passwordToggle:hover {
+    color: var(--text-primary);
+}
+
+.submitBtn {
+    width: 100%;
+    margin-top: var(--space-md);
+}
+
+.authFooter {
+    text-align: center;
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.authLink {
+    color: var(--accent-primary);
+    font-weight: 500;
+    transition: opacity var(--transition-fast);
+}
+
+.authLink:hover {
+    opacity: 0.8;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .authCard {
+        padding: var(--space-lg);
+    }
+
+    .authHeader h1 {
+        font-size: 1.5rem;
+    }
+}

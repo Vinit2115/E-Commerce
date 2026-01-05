@@ -1,0 +1,135 @@
+.footer {
+    margin-top: auto;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: var(--space-3xl) 0 var(--space-xl);
+}
+
+.footerContainer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xl);
+}
+
+.footerGrid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: var(--space-2xl);
+}
+
+.brand {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    width: fit-content;
+}
+
+.logoIcon {
+    font-size: 1.8rem;
+}
+
+.brandDesc {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    max-width: 280px;
+    line-height: 1.6;
+}
+
+.linksGroup {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.linksGroup h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-sm);
+}
+
+.linksGroup a {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    transition: color var(--transition-fast);
+}
+
+.linksGroup a:hover {
+    color: var(--accent-primary);
+}
+
+.socialLink {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.footerBottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--space-xl);
+    border-top: 1px solid var(--border-color);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.madeWith {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.heart {
+    color: var(--error);
+    animation: pulse 1.5s ease infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .footerGrid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-xl);
+    }
+
+    .brand {
+        grid-column: span 2;
+    }
+
+    .footerBottom {
+        flex-direction: column;
+        gap: var(--space-sm);
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .footerGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .brand {
+        grid-column: span 1;
+    }
+}
