@@ -1,14 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { User, Mail, Lock, Key, Save, LogOut, Shield } from 'lucide-react';
+import { User, Lock, Key, Save, LogOut, Shield } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import styles from './page.module.css';
 
 export default function ProfilePage() {
     const router = useRouter();
-    const { user, isAuthenticated, isAdmin, logout, updatePassword } = useAuth();
+    const { user, isAuthenticated, isAdmin, isLoading: authLoading, logout, updatePassword } = useAuth();
 
     const [passwordData, setPasswordData] = useState({
         newPassword: '',
@@ -17,11 +17,12 @@ export default function ProfilePage() {
     const [isUpdating, setIsUpdating] = useState(false);
     const [message, setMessage] = useState({ type: '', text: '' });
 
-    // Redirect if not authenticated
-    if (!isAuthenticated) {
-        router.push('/login');
-        return null;
-    }
+    // Redirect if not authenticated - using useEffect to avoid render-time navigation
+    useEffect(() => {
+        if (!authLoading && !isAuthenticated) {
+            router.push('/login');
+        }
+    }, [authLoading, isAuthenticated, router]);
 
     const handlePasswordChange = (e) => {
         const { name, value } = e.target;
@@ -65,14 +66,40 @@ export default function ProfilePage() {
         router.push('/');
     };
 
+    // Show loading while checking auth
+    if (authLoading) {
+        return (
+            <div className={styles.profilePage}>
+                <div className="container">
+                    <div className="loader-container">
+                        <div className="loader"></div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    // Don't render if not authenticated (redirect will happen via useEffect)
+    if (!isAuthenticated) {
+        return (
+            <div className={styles.profilePage}>
+                <div className="container">
+                    <div className="loader-container">
+                        <div className="loader"></div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className={styles.profilePage}>
             <div className="container">
-                <h1>My Profile</h1>
+                <h1 className="fade-in-up">My Profile</h1>
 
                 <div className={styles.profileGrid}>
                     {/* User Info Card */}
-                    <div className={styles.card}>
+                    <div className={`${styles.card} fade-in-up`} style={{ animationDelay: '0.1s' }}>
                         <div className={styles.cardHeader}>
                             <User size={20} />
                             <h2>Account Information</h2>
@@ -106,7 +133,7 @@ export default function ProfilePage() {
                     </div>
 
                     {/* Change Password Card */}
-                    <div className={styles.card}>
+                    <div className={`${styles.card} fade-in-up`} style={{ animationDelay: '0.2s' }}>
                         <div className={styles.cardHeader}>
                             <Key size={20} />
                             <h2>Change Password</h2>
@@ -169,7 +196,7 @@ export default function ProfilePage() {
                     </div>
 
                     {/* Logout Card */}
-                    <div className={styles.card}>
+                    <div className={`${styles.card} fade-in-up`} style={{ animationDelay: '0.3s' }}>
                         <div className={styles.cardHeader}>
                             <LogOut size={20} />
                             <h2>Sign Out</h2>

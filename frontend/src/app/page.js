@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowRight, ShoppingBag, Star, Truck, Shield, Headphones } from 'lucide-react';
+import { ArrowRight, ShoppingBag, Star, Truck, Shield, Headphones, Sparkles } from 'lucide-react';
 import { productAPI } from '@/api/productAPI';
 import ProductCard from '@/components/ProductCard/ProductCard';
 import styles from './page.module.css';
@@ -54,18 +54,18 @@ export default function Home() {
       <section className={styles.hero}>
         <div className={`container ${styles.heroContent}`}>
           <div className={styles.heroText}>
-            <span className={styles.heroBadge}>
-              <ShoppingBag size={16} />
+            <span className={`${styles.heroBadge} fade-in-up`}>
+              <Sparkles size={16} className="pulse" />
               New Collection 2026
             </span>
-            <h1 className={styles.heroTitle}>
+            <h1 className={`${styles.heroTitle} fade-in-up stagger-1`}>
               Discover <span className="heading-gradient">Premium</span> Products
             </h1>
-            <p className={styles.heroSubtitle}>
+            <p className={`${styles.heroSubtitle} fade-in-up stagger-2`}>
               Explore our curated collection of high-quality products designed to elevate your lifestyle.
               Unbeatable prices, exceptional quality.
             </p>
-            <div className={styles.heroActions}>
+            <div className={`${styles.heroActions} fade-in-up stagger-3`}>
               <Link href="/products" className="btn btn-primary btn-lg">
                 Shop Now
                 <ArrowRight size={20} />
@@ -77,9 +77,9 @@ export default function Home() {
           </div>
 
           <div className={styles.heroVisual}>
-            <div className={styles.heroCard}>
+            <div className={`${styles.heroCard} glow-pulse`}>
               <div className={styles.heroCardInner}>
-                <span>🛍️</span>
+                <span className="float">🛍️</span>
               </div>
             </div>
           </div>
@@ -88,6 +88,7 @@ export default function Home() {
         {/* Floating elements */}
         <div className={styles.floatingOrb1}></div>
         <div className={styles.floatingOrb2}></div>
+        <div className={styles.floatingOrb3}></div>
       </section>
 
       {/* Features Section */}
@@ -95,7 +96,11 @@ export default function Home() {
         <div className="container">
           <div className={styles.featuresGrid}>
             {features.map((feature, index) => (
-              <div key={index} className={styles.featureCard}>
+              <div
+                key={index}
+                className={`${styles.featureCard} card-hover`}
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
                 <div className={styles.featureIcon}>{feature.icon}</div>
                 <h3>{feature.title}</h3>
                 <p>{feature.description}</p>
@@ -109,8 +114,8 @@ export default function Home() {
       <section className={styles.featured}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <h2>Featured Products</h2>
-            <Link href="/products" className={styles.viewAll}>
+            <h2 className="fade-in-up">Featured Products</h2>
+            <Link href="/products" className={`${styles.viewAll} link-underline`}>
               View All
               <ArrowRight size={18} />
             </Link>
@@ -130,12 +135,18 @@ export default function Home() {
             </div>
           ) : featuredProducts.length > 0 ? (
             <div className={styles.productsGrid}>
-              {featuredProducts.map((product) => (
-                <ProductCard key={product.prodId} product={product} />
+              {featuredProducts.map((product, index) => (
+                <div
+                  key={product.prodId}
+                  className="fade-in-up"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <ProductCard product={product} />
+                </div>
               ))}
             </div>
           ) : (
-            <div className={styles.emptyState}>
+            <div className={`${styles.emptyState} fade-in-up`}>
               <ShoppingBag size={48} />
               <p>No products available yet. Check back soon!</p>
             </div>
@@ -146,7 +157,8 @@ export default function Home() {
       {/* CTA Section */}
       <section className={styles.cta}>
         <div className="container">
-          <div className={styles.ctaCard}>
+          <div className={`${styles.ctaCard} scale-in`}>
+            <Sparkles size={32} className="bounce" />
             <h2>Ready to Shop?</h2>
             <p>Join thousands of satisfied customers and discover premium products today.</p>
             <Link href="/register" className="btn btn-primary btn-lg">

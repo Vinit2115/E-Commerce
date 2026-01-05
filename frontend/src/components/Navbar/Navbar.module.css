@@ -2,10 +2,16 @@
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: rgba(10, 10, 15, 0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(10, 10, 15, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border-color);
+    transition: background var(--transition-base), border-color var(--transition-base);
+}
+
+/* Light mode navbar */
+:global([data-theme="light"]) .navbar {
+    background: rgba(248, 250, 252, 0.85);
 }
 
 .navContainer {
@@ -22,10 +28,16 @@
     font-family: var(--font-display);
     font-size: 1.5rem;
     font-weight: 700;
+    transition: transform var(--transition-fast);
+}
+
+.logo:hover {
+    transform: scale(1.05);
 }
 
 .logoIcon {
     font-size: 1.8rem;
+    animation: float 3s ease-in-out infinite;
 }
 
 .logoText {
@@ -45,8 +57,9 @@
     font-size: 0.95rem;
     font-weight: 500;
     color: var(--text-secondary);
-    transition: color var(--transition-fast);
+    transition: all var(--transition-fast);
     position: relative;
+    padding: var(--space-sm) 0;
 }
 
 .navLink:hover,
@@ -57,12 +70,13 @@
 .navLink.active::after {
     content: '';
     position: absolute;
-    bottom: -8px;
+    bottom: 0;
     left: 0;
     right: 0;
     height: 2px;
     background: var(--accent-gradient);
     border-radius: 2px;
+    animation: scaleIn 0.3s ease;
 }
 
 .navActions {
@@ -81,12 +95,13 @@
     border-radius: var(--radius-full);
     background: var(--bg-tertiary);
     color: var(--text-secondary);
-    transition: all var(--transition-fast);
+    transition: all var(--transition-base);
 }
 
 .cartBtn:hover {
     background: var(--bg-secondary);
-    color: var(--text-primary);
+    color: var(--accent-primary);
+    transform: scale(1.1) rotate(-5deg);
 }
 
 .cartBadge {
@@ -104,6 +119,7 @@
     font-size: 0.7rem;
     font-weight: 600;
     border-radius: var(--radius-full);
+    animation: scaleIn 0.3s ease;
 }
 
 .userMenu {
@@ -120,12 +136,13 @@
     border-radius: var(--radius-full);
     background: var(--bg-tertiary);
     color: var(--text-secondary);
-    transition: all var(--transition-fast);
+    transition: all var(--transition-base);
 }
 
 .userBtn:hover {
     background: var(--bg-secondary);
     color: var(--text-primary);
+    transform: translateY(-2px);
 }
 
 .userName {
@@ -148,12 +165,13 @@
     background: var(--bg-tertiary);
     color: var(--text-muted);
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: all var(--transition-base);
 }
 
 .logoutBtn:hover {
     background: rgba(239, 68, 68, 0.2);
     color: var(--error);
+    transform: scale(1.1);
 }
 
 .menuToggle {
@@ -167,6 +185,34 @@
     background: var(--bg-tertiary);
     color: var(--text-primary);
     cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.menuToggle:hover {
+    background: var(--bg-secondary);
+}
+
+/* Animations */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
 }
 
 /* Mobile Styles */
