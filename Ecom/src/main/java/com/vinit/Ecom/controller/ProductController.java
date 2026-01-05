@@ -9,47 +9,41 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/products")
-public class ProductController
-{
+@CrossOrigin(origins = "http://localhost:3000")
+public class ProductController {
     private final ProductService prodServ;
 
-    public ProductController(ProductService prodServ)
-    {
-        this.prodServ=prodServ;
+    public ProductController(ProductService prodServ) {
+        this.prodServ = prodServ;
     }
 
-    /*Fully Working*/
+    /* Fully Working */
     @PostMapping("/add")
-    public Product addProd(@RequestBody Product prod)
-    {
+    public Product addProd(@RequestBody Product prod) {
         return prodServ.addProducts(prod);
     }
 
-    /*Fully Working*/
+    /* Fully Working */
     @GetMapping
-    public List<Product> getAllProd()
-    {
+    public List<Product> getAllProd() {
         return prodServ.getAllProducts();
     }
 
-    /*Fully Working*/
+    /* Fully Working */
     @GetMapping("/id/{prodId}")
-    public Optional<Product> getProdById(@PathVariable String prodId)
-    {
+    public Optional<Product> getProdById(@PathVariable String prodId) {
         return prodServ.getProductsById(prodId);
     }
 
-    /*Fully Working*/
+    /* Fully Working */
     @GetMapping("/category/{prodCat}")
-    public List<Product> getProdByCat(@PathVariable String prodCat)
-    {
+    public List<Product> getProdByCat(@PathVariable String prodCat) {
         return prodServ.getProductsByCategory(prodCat);
     }
 
-    /*Fully Working*/
+    /* Fully Working */
     @DeleteMapping("/delete/{prodId}")
-    public void removeProd(@PathVariable String prodId)
-    {
+    public void removeProd(@PathVariable String prodId) {
         prodServ.removeProducts(prodId);
     }
 }
