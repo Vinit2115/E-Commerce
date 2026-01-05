@@ -11,5 +11,4 @@ public class EcomApplication
 	{
 		SpringApplication.run(EcomApplication.class, args);
 	}
-	/*Kraya(क्रय)*/
 }
