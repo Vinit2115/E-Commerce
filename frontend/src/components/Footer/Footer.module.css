@@ -3,6 +3,7 @@
     background: var(--bg-secondary);
     border-top: 1px solid var(--border-color);
     padding: var(--space-3xl) 0 var(--space-xl);
+    transition: background var(--transition-base), border-color var(--transition-base);
 }
 
 .footerContainer {
@@ -31,6 +32,11 @@
     font-size: 1.5rem;
     font-weight: 700;
     width: fit-content;
+    transition: transform var(--transition-base);
+}
+
+.logo:hover {
+    transform: scale(1.05);
 }
 
 .logoIcon {
@@ -60,11 +66,14 @@
 .linksGroup a {
     color: var(--text-muted);
     font-size: 0.9rem;
-    transition: color var(--transition-fast);
+    transition: all var(--transition-fast);
+    display: inline-block;
+    position: relative;
 }
 
 .linksGroup a:hover {
     color: var(--accent-primary);
+    transform: translateX(4px);
 }
 
 .socialLink {
@@ -91,18 +100,26 @@
 
 .heart {
     color: var(--error);
-    animation: pulse 1.5s ease infinite;
+    animation: heartbeat 1.5s ease infinite;
 }
 
-@keyframes pulse {
+@keyframes heartbeat {
 
     0%,
     100% {
         transform: scale(1);
     }
 
-    50% {
+    25% {
         transform: scale(1.2);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    75% {
+        transform: scale(1.3);
     }
 }
 
