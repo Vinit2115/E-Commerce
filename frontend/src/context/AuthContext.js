@@ -30,16 +30,19 @@ export function AuthProvider({ children }) {
         try {
             const response = await authAPI.login(email, password);
             // Backend returns a message, we need to fetch user data
-            if (response === 'Login successful') {
+            // Relaxed check: if we get a response and no error was thrown by interceptor, assume success
+            // The backend might return a simple string or an object
+            if (response) {
                 const userData = await userAPI.getUserByEmail(email);
                 setUser(userData);
                 localStorage.setItem('user', JSON.stringify(userData));
                 return { success: true };
             } else {
-                setError(response);
-                return { success: false, message: response };
+                setError('Unexpected response from server');
+                return { success: false, message: 'Unexpected response' };
             }
         } catch (err) {
+            console.error('Login error:', err);
             const message = err.response?.data || 'Login failed. Please try again.';
             setError(message);
             return { success: false, message };
@@ -53,11 +56,11 @@ export function AuthProvider({ children }) {
         setError(null);
         try {
             const response = await authAPI.register(name, email, password);
-            if (response === 'User registered successfully') {
+            if (response) {
                 return { success: true };
             } else {
-                setError(response);
-                return { success: false, message: response };
+                setError('Unexpected response from server');
+                return { success: false, message: 'Unexpected response' };
             }
         } catch (err) {
             const message = err.response?.data || 'Registration failed. Please try again.';

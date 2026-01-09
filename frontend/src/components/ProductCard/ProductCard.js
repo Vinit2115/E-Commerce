@@ -31,11 +31,24 @@ export default function ProductCard({ product }) {
         <Link href={`/products/${product.prodId}`} className={styles.card}>
             <div
                 className={styles.imageWrapper}
-                style={{ background: getGradientColor(product.prodId) }}
+                style={
+                    product.prodImage
+                        ? {}
+                        : { background: getGradientColor(product.prodId) }
+                }
             >
-                <div className={styles.imagePlaceholder}>
-                    {product.prodName?.charAt(0)?.toUpperCase() || 'P'}
-                </div>
+                {product.prodImage ? (
+                    <img
+                        src={product.prodImage}
+                        alt={product.prodName}
+                        className={styles.productImage}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
+                ) : (
+                    <div className={styles.imagePlaceholder}>
+                        {product.prodName?.charAt(0)?.toUpperCase() || 'P'}
+                    </div>
+                )}
                 <div className={styles.overlay}>
                     <button className={styles.quickAdd} onClick={handleAddToCart}>
                         <ShoppingCart size={18} />

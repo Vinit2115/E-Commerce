@@ -122,10 +122,10 @@ export default function ManageProductsPage() {
                         <Package size={28} />
                         Manage Products
                     </h1>
-                    <button className="btn btn-primary" onClick={() => setIsModalOpen(true)}>
+                    <Link href="/admin/add-product" className="btn btn-primary">
                         <Plus size={18} />
                         Add Product
-                    </button>
+                    </Link>
                 </div>
 
                 {isLoading ? (
@@ -145,9 +145,21 @@ export default function ManageProductsPage() {
                                 <div className={styles.productCell}>
                                     <div
                                         className={styles.productImage}
-                                        style={{ background: getGradientColor(product.prodId) }}
+                                        style={
+                                            product.prodImage
+                                                ? {}
+                                                : { background: getGradientColor(product.prodId) }
+                                        }
                                     >
-                                        {product.prodName?.charAt(0)?.toUpperCase()}
+                                        {product.prodImage ? (
+                                            <img
+                                                src={product.prodImage}
+                                                alt={product.prodName}
+                                                style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'inherit' }}
+                                            />
+                                        ) : (
+                                            product.prodName?.charAt(0)?.toUpperCase()
+                                        )}
                                     </div>
                                     <div>
                                         <span className={styles.productName}>{product.prodName}</span>

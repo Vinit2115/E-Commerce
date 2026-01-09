@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { LayoutDashboard, Package, Users, ShoppingBag, TrendingUp, ArrowRight } from 'lucide-react';
+import { LayoutDashboard, Package, Users, ShoppingBag, TrendingUp, ArrowRight, Plus } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { productAPI } from '@/api/productAPI';
 import { userAPI } from '@/api/userAPI';
@@ -83,9 +83,15 @@ export default function AdminDashboard() {
     const quickActions = [
         {
             title: 'Manage Products',
-            description: 'Add, edit, or remove products',
+            description: 'View and edit existing products',
             href: '/admin/products',
             icon: <Package size={20} />,
+        },
+        {
+            title: 'Add New Product',
+            description: 'Create a new product listing',
+            href: '/admin/add-product',
+            icon: <Plus size={20} />,
         },
         {
             title: 'Manage Users',

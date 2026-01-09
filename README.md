@@ -1,94 +1,75 @@
-# E-Commerce Full-Stack Application
+# E-Commerce Project
 
-A **Full-Stack E-Commerce Application** built using **Spring Boot**, **MongoDB**, and **React.js**. This project demonstrates practical implementation of backend REST APIs and a frontend user interface, following a clean and modular architecture. It is intended for academic use, learning purposes, and portfolio demonstration.
+A full-stack e-commerce application built with Next.js (Frontend) and Spring Boot (Backend).
 
-## 🚀 Key Features
+## Features
 
-* User authentication (Sign Up & Sign In)
-* Product management with CRUD operations
-* Role-based access (Admin / User)
-* RESTful backend services
-* React-based frontend interface
-* Frontend–backend communication via APIs
+-   **User Authentication**: Secure Login and Registration with JWT.
+-   **Product Management**: Admin interface to Add, Edit, and Delete products.
+-   **Shopping Cart**: Fully functional cart with quantity management.
+-   **Responsive Design**: Modern, responsive UI built with CSS Modules.
+-   **Admin Dashboard**: Overview of store statistics and quick actions.
+-   **Image Support**: Product images supported via URL.
 
-## 🛠️ Tech Stack
-
-### Backend
-
-* Java
-* Spring Boot
-* MongoDB
-* Maven
+## Tech Stack
 
 ### Frontend
+-   **Next.js 14**: React framework for production.
+-   **Lucide React**: Icon set.
+-   **CSS Modules**: Scoped styling.
+-   **Axios**: API requests.
 
-* React.js
-* JavaScript
-* CSS / Bootstrap
-* Axios
+### Backend
+-   **Spring Boot**: Java framework for the REST API.
+-   **MongoDB**: NoSQL database.
+-   **Spring Security**: Authentication and Authorization.
 
-## 📁 Project Structure
+## Getting Started
 
-E-Commerce
-│── backend
-│   ├── src/main/java/com/example/ecom
-│   │   ├── controller
-│   │   ├── service
-│   │   ├── repository
-│   │   └── model
-│   │
-│   └── src/main/resources
-│       └── application.properties
-│
-│── frontend
-│   ├── src
-│   │   ├── components
-│   │   ├── pages
-│   │   └── services
-│   │
-│   └── package.json
-```
+### Prerequisites
+-   Node.js (v18+)
+-   Java JDK 17+
+-   MongoDB (Running locally or Atlas)
 
-## ▶️ Running the Application
+### Installation
 
-### Backend Setup
+1.  **Clone the repository**
+    ```bash
+    git clone <repository-url>
+    cd E-Commerce
+    ```
 
-1. Navigate to the backend directory.
-2. Configure MongoDB in `application.properties`.
-3. Build and run the Spring Boot application.
-4. Backend server runs on:
-   http://localhost:8080
+2.  **Frontend Setup**
+    ```bash
+    cd frontend
+    npm install
+    npm run dev
+    ```
+    The frontend will run on `http://localhost:3000`.
 
-### Frontend Setup
+3.  **Backend Setup**
+    Open the `Ecom` folder in your IDE (IntelliJ/Eclipse) and run the `EcomApplication.java`.
+    The backend runs on `http://localhost:8080`.
 
-1. Navigate to the frontend directory.
+## Admin Features
 
-2. Install dependencies:
-   npm install
-   
-3. Start the React development server:
-   npm start
-   
-4. Frontend runs on:
-   http://localhost:3000
+To access admin features, ensure your user role is set to `ADMIN` in the database.
 
-## 📌 Project Highlights
+-   **Dashboard**: View total products, users, and categories.
+-   **Add Product**: Navigate to `/admin/add-product` to list new items.
 
-* Clean separation of frontend and backend
-* Scalable and maintainable code structure
-* Real-world full-stack development workflow
-* Suitable for resume and portfolio showcase
+## Screenshots
 
-## 👨‍💻 Authors
+<!-- Add your screenshots here -->
 
-**Vinit Patil**
-Backend Developer
-Java | Spring Boot | MongoDB
+### Landing Page
+![Landing Page](https://via.placeholder.com/800x400?text=Landing+Page+Screenshot)
 
-**Ravi Rajput**
-Frontend Developer
-React.js | JavaScript | CSS
+### Product Details
+![Product Details](https://via.placeholder.com/800x400?text=Product+Details+Screenshot)
 
-## 📄 License
+### Admin Dashboard
+![Admin Dashboard](https://via.placeholder.com/800x400?text=Admin+Dashboard+Screenshot)
 
-This project is intended for educational and learning purposes only.
+### Add Product Page
+![Add Product](https://via.placeholder.com/800x400?text=Add+Product+Page+Screenshot)
